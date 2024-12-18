@@ -38,9 +38,9 @@ import (
 	"github.com/groob/plist"
 	"github.com/jmoiron/sqlx"
 	micromdm "github.com/micromdm/micromdm/mdm/mdm"
+	"github.com/smallstep/pkcs7"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.mozilla.org/pkcs7"
 )
 
 type profileAssignmentReq struct {
@@ -1845,6 +1845,11 @@ func (s *integrationMDMTestSuite) TestSetupExperienceScript() {
 	res := s.DoRawWithHeaders("POST", "/api/latest/fleet/setup_experience/script", body.Bytes(), http.StatusOK, headers)
 	err = json.NewDecoder(res.Body).Decode(&newScriptResp)
 	require.NoError(t, err)
+
+	// test script secret validation
+	body, headers = generateNewScriptMultipartRequest(t,
+		"script.sh", []byte(`echo "$FLEET_SECRET_INVALID"`), s.token, map[string][]string{})
+	s.DoRawWithHeaders("POST", "/api/latest/fleet/setup_experience/script", body.Bytes(), http.StatusUnprocessableEntity, headers)
 
 	// get team script metadata
 	var getScriptResp getSetupExperienceScriptResponse

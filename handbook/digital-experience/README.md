@@ -362,9 +362,9 @@ To [change a teammate's compensation](https://fleetdm.com/handbook/company/commu
   - Update the "¶¶ Annual OTE ($)" column with the new compensation information.
   - Update the "Last compensation change" column with the effective date from payroll platform.
   - Update the "¶¶ Notes" column. **⚠️ MAKE SURE NOT TO DELETE ANY EXISTING NOTES ⚠️** Add the note to the top of the cell using the following format: `As of YYYY-MM-DD OTE +15k` (pattern match off of other 2024 notes). Link your note to the relevant title in the ["¶¶ 💌 Compensation decisions (offer math)" (classified Google Doc)](https://docs.google.com/document/d/1NQ-IjcOTbyFluCWqsFLMfP4SvnopoXDcX0civ-STS5c/edit?tab=t.0#heading=h.slomq4whmyas).
+  - If the company decides on an additional equity grant as part of a compensation change, note the previous equity and new situation in detail in the "Notes" column of the equity plan. Update the "Grant started?" column to "todo" which adds it to the queue for the next time grants are processed (quarterly).
 7. Calculate the monthly burn rate increase percentage and notify the CEO via a Slack DM.
 
-> If the company decides on an additional equity grant as part of a compensation change, note the previous equity and new situation in detail in the "Notes" column of the equity plan. Update the "Grant started?" column to "todo" which adds it to the queue for the next time grants are processed (quarterly).
 
 
 ### Grant equity
@@ -673,7 +673,9 @@ It's not enough to just "delete" a recording of a meeting in Gong.  Instead, use
 ### Communicate Fleet's potential energy to stakeholders
 
 On the first business day of every month, the Head of Digital Experience will send an update to the stakeholders of Fleet using the following steps:
-1. Copy the following template into an outgoing email with the subject line: "[Investor update] Fleet, YYYY-MM".
+1. Navigate to the "[🪴🌧️🦉 Investor updates](https://docs.google.com/spreadsheets/d/10T7Q9iuHA4vpfV7qZCm6oMd5U1bLftBSobYD0RR8RkM/edit?gid=0#gid=0)" spreadsheet and confirm the data in each column matches the header of that column (e.g. the "Headcount" column actually has headcount values in it). Do this by confirming the "Remote column" value corresponds to the correct column "letter" in the "Weekly updates" tab of the "[📈 OKRs (quarterly goals) + KPIs (everyday metrics)](https://docs.google.com/spreadsheets/d/1Hso0LxqwrRVINCyW_n436bNHmoqhoLhC8bcbvLPOs9A/edit?gid=0#gid=0)" spreadsheet.
+2. Confirm KPI's are up-to-date. If any KPI's aren't completed, at mention the e-group member responsible and ask that the KPI's be completed ASAP in order to send the investor update. 
+3. Copy the following template into an outgoing email with the subject line: "[Investor update] Fleet, YYYY-MM".
 
 ```
 Hi investors and friends,
@@ -687,8 +689,8 @@ Mike and the Fleet team
 
 ```
 
-2. Address the email to the executive team's Gmail.
-3. Using the [🌧️🦉 Investors + advisors](https://docs.google.com/spreadsheets/d/15knBE2-PrQ1Ad-QcIk0mxCN-xFsATKK9hcifqrm0qFQ/edit#gid=1068113636) spreadsheet, bcc the correct individuals and send the email.
+4. Address the email to the executive team's Gmail.
+5. Using the [🌧️🦉 Investors + advisors](https://docs.google.com/spreadsheets/d/15knBE2-PrQ1Ad-QcIk0mxCN-xFsATKK9hcifqrm0qFQ/edit#gid=1068113636) spreadsheet, bcc the correct individuals and send the email.
 
 
 ### Schedule press release
