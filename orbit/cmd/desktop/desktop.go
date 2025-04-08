@@ -516,7 +516,8 @@ func main() {
 
 	err = systray.Run(onReady, onExit)
 	if err != nil {
-		log.Error().Err(err).Msg("systray error")
+		// We have seen some limited cases such as Windows Autopilot enrollment where this fails to startup
+		log.Fatal().Err(err).Msg("systray startup error")
 	}
 }
 
