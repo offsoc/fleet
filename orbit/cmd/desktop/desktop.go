@@ -514,7 +514,10 @@ func main() {
 		}()
 	}
 
-	systray.Run(onReady, onExit)
+	err = systray.Run(onReady, onExit)
+	if err != nil {
+		log.Error().Err(err).Msg("systray error")
+	}
 }
 
 func refreshMenuItems(sum fleet.DesktopSummary, selfServiceItem *systray.MenuItem, myDeviceItem *systray.MenuItem) {

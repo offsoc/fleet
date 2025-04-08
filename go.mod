@@ -293,6 +293,8 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
+replace fyne.io/systray => github.com/JordanMontgomery/systray v0.0.0-20250408152630-5b461f6e98e4
+
 tool (
 	github.com/fleetdm/fleet/v4/server/goose
 	github.com/kevinburke/go-bindata
