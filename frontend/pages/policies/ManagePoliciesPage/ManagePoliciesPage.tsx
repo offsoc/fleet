@@ -766,29 +766,41 @@ const ManagePolicyPage = ({
   }: IConditionalAccessFormData) => {
     setIsUpdatingPolicies(true);
 
+    //     config.integrations.conditional_access_enabled <–– No team enabled/disabled
+    // teamconfig.integrations.conditional_access_enabled <-- all other teams enabled/disabled
+    // config.conditional_access <-- configuration details
+
     try {
       if (teamIdForApi === API_NO_TEAM_ID) {
         // patch global config (No team case)
-        const payload = {
-          integrations: {
-            ...globalConfig?.integrations,
-            conditional_access_enabled: enableConditionalAccess,
-          },
-        };
-        // TODO - confirm nothing getting unintentionally overwritten here
-        await configAPI.update(payload);
-        refetchTeamConfig();
+
+        // TODO - real API call
+
+        // const payload = {
+        //   integrations: {
+        //     ...globalConfig?.integrations,
+        //     conditional_access_enabled: enableConditionalAccess,
+        //   },
+        // };
+        // // TODO - confirm nothing getting unintentionally overwritten here
+        // await configAPI.update(payload);
+        // refetchTeamConfig();
+        Promise.resolve("nice, patched global (no team) config");
       } else {
-        const payload = {
-          integrations: {
-            conditional_access_enabled: enableConditionalAccess,
-            // These fields will never actually be changed here. See comment above
-            // IGlobalIntegrations definition.
-            zendesk: teamConfig?.integrations.zendesk || [],
-            jira: teamConfig?.integrations.jira || [],
-          },
-        };
-        await teamsAPI.update(payload, teamIdForApi);
+        // TODO - real API call
+
+        // const payload = {
+        //   integrations: {
+        //     conditional_access_enabled: enableConditionalAccess,
+        //     // These fields will never actually be changed here. See comment above
+        //     // IGlobalIntegrations definition.
+        //     zendesk: teamConfig?.integrations.zendesk || [],
+        //     jira: teamConfig?.integrations.jira || [],
+        //   },
+        // };
+        // await teamsAPI.update(payload, teamIdForApi);
+
+        Promise.resolve("nice, patched team config");
         refetchGlobalConfig();
       }
       renderFlash(
