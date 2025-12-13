@@ -314,6 +314,160 @@ software:
       self_service: true
     - slug: zoom/darwin # Zoom for macOS
       self_service: true
+    - slug: aircall/darwin # Aircall for macOS
+      self_service: true
+    - slug: amazon-chime/darwin # Amazon Chime for macOS
+      self_service: true
+    - slug: anka-virtualization/darwin # Anka for macOS
+      self_service: true
+    - slug: apparency/darwin # Apparency for macOS
+      self_service: true
+    - slug: arc/darwin # Arc for macOS
+      self_service: true
+    - slug: archaeology/darwin # Archaeology for macOS
+      self_service: true
+    - slug: audacity/darwin # Audacity for macOS
+      self_service: true
+    - slug: avast-secure-browser/darwin # Avast Secure Browser for macOS
+      self_service: true
+    - slug: aws-vpn-client/darwin # AWS Client VPN for macOS
+      self_service: true
+    - slug: balenaetcher/darwin # balenaEtcher for macOS
+      self_service: true
+    - slug: blender/darwin # Blender for macOS
+      self_service: true
+    - slug: bruno/darwin # Bruno for macOS
+      self_service: true
+    - slug: cleanmymac/darwin # CleanMyMac for macOS
+      self_service: true
+    - slug: cleanshot/darwin # CleanShot X for macOS
+      self_service: true
+    - slug: clockify/darwin # Clockify Desktop for macOS
+      self_service: true
+    - slug: coteditor/darwin # CotEditor for macOS
+      self_service: true
+    - slug: db-browser-for-sqlite/darwin # DB Browser for SQLite for macOS
+      self_service: true
+    - slug: dbeaver-community/darwin # DBeaver for macOS
+      self_service: true
+    - slug: dbeaver-enterprise/darwin # DBeaverEE for macOS
+      self_service: true
+    - slug: dbeaverlite/darwin # DBeaverLite for macOS
+      self_service: true
+    - slug: dbeaverultimate/darwin # DBeaverUltimate for macOS
+      self_service: true
+    - slug: deepl/darwin # DeepL for macOS
+      self_service: true
+    - slug: dialpad/darwin # Dialpad for macOS
+      self_service: true
+    - slug: eclipse-ide/darwin # Eclipse IDE for macOS
+      self_service: true
+    - slug: egnyte/darwin # Egnyte for macOS
+      self_service: true
+    - slug: elgato-control-center/darwin # Elgato Control Center for macOS
+      self_service: true
+    - slug: elgato-stream-deck/darwin # Elgato Stream Deck for macOS
+      self_service: true
+    - slug: evernote/darwin # Evernote for macOS
+      self_service: true
+    - slug: expressvpn/darwin # ExpressVPN for macOS
+      self_service: true
+    - slug: filemaker-pro/darwin # FileMaker Pro for macOS
+      self_service: true
+    - slug: fork/darwin # Fork for macOS
+      self_service: true
+    - slug: front/darwin # Front for macOS
+      self_service: true
+    - slug: ghostty/darwin # Ghostty for macOS
+      self_service: true
+    - slug: gimp/darwin # GIMP for macOS
+      self_service: true
+    - slug: gpg-suite/darwin # GPG Suite for macOS
+      self_service: true
+    - slug: hyper/darwin # Hyper for macOS
+      self_service: true
+    - slug: inkscape/darwin # Inkscape for macOS
+      self_service: true
+    - slug: jabra-direct/darwin # Jabra Direct for macOS
+      self_service: true
+    - slug: keepassxc/darwin # KeePassXC for macOS
+      self_service: true
+    - slug: keeper-password-manager/darwin # Keeper Password Manager for macOS
+      self_service: true
+    - slug: keka/darwin # Keka for macOS
+      self_service: true
+    - slug: lens/darwin # Lens for macOS
+      self_service: true
+    - slug: libreoffice/darwin # LibreOffice for macOS
+      self_service: true
+    - slug: maccy/darwin # Maccy for macOS
+      self_service: true
+    - slug: mattermost/darwin # Mattermost for macOS
+      self_service: true
+    - slug: microsoft-auto-update/darwin # Microsoft Auto Update for macOS
+      self_service: true
+    - slug: mongodb-compass/darwin # MongoDB Compass for macOS
+      self_service: true
+    - slug: nordpass/darwin # NordPass for macOS
+      self_service: true
+    - slug: obs/darwin # OBS for macOS
+      self_service: true
+    - slug: obsidian/darwin # Obsidian for macOS
+      self_service: true
+    - slug: orbstack/darwin # OrbStack for macOS
+      self_service: true
+    - slug: pgadmin4/darwin # pgAdmin4 for macOS
+      self_service: true
+    - slug: protonvpn/darwin # ProtonVPN for macOS
+      self_service: true
+    - slug: quip/darwin # Quip for macOS
+      self_service: true
+    - slug: rapidapi/darwin # RapidAPI for macOS
+      self_service: true
+    - slug: raycast/darwin # Raycast for macOS
+      self_service: true
+    - slug: royal-tsx/darwin # Royal TSX for macOS
+      self_service: true
+    - slug: shottr/darwin # Shottr for macOS
+      self_service: true
+    - slug: sketch/darwin # Sketch for macOS
+      self_service: true
+    - slug: snagit/darwin # Snagit for macOS
+      self_service: true
+    - slug: sourcetree/darwin # SourceTree for macOS
+      self_service: true
+    - slug: splashtop-business/darwin # Splashtop Business for macOS
+      self_service: true
+    - slug: splashtop-streamer/darwin # Splashtop Streamer for macOS
+      self_service: true
+    - slug: stats/darwin # Stats for macOS
+      self_service: true
+    - slug: sublime-merge/darwin # Sublime Merge for macOS
+      self_service: true
+    - slug: surfshark/darwin # Surfshark for macOS
+      self_service: true
+    - slug: suspicious-package/darwin # Suspicious Package for macOS
+      self_service: true
+    - slug: tableau/darwin # Tableau Desktop for macOS
+      self_service: true
+    - slug: transmit/darwin # Transmit for macOS
+      self_service: true
+    - slug: utm/darwin # UTM for macOS
+      self_service: true
+    - slug: virtualbox/darwin # VirtualBox for macOS
+      self_service: true
+    - slug: viscosity/darwin # Viscosity for macOS
+      self_service: true
+    - slug: wacom-tablet/darwin # Wacom Tablet for macOS
+      self_service: true
+    - slug: windsurf/darwin # Windsurf for macOS
+      self_service: true
+    - slug: wireshark-app/darwin # Wireshark for macOS
+      self_service: true
+    - slug: yubico-authenticator/darwin # Yubico Authenticator for macOS
+      self_service: true
+    - slug: zeplin/darwin # Zeplin for macOS
+      self_service: true
     # Windows apps
     - slug: google-chrome/windows # Google Chrome for Windows
       self_service: true
@@ -360,4 +514,22 @@ software:
     - slug: webex/windows # Webex for Windows
       self_service: true
     - slug: zoom/windows # Zoom for Windows
+      self_service: true
+    - slug: asana/windows # Asana for Windows
+      self_service: true
+    - slug: blender/windows # Blender for Windows
+      self_service: true
+    - slug: cisco-jabber/windows # Cisco Jabber for Windows
+      self_service: true
+    - slug: clickup/windows # ClickUp for Windows
+      self_service: true
+    - slug: cyberduck/windows # Cyberduck for Windows
+      self_service: true
+    - slug: keepassxc/windows # KeePassXC for Windows
+      self_service: true
+    - slug: twingate/windows # Twingate for Windows
+      self_service: true
+    - slug: vlc/windows # VLC media player for Windows
+      self_service: true
+    - slug: wireshark/windows # Wireshark for Windows
       self_service: true
