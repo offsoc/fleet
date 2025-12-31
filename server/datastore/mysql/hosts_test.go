@@ -1105,10 +1105,10 @@ func testHostListAndroidCertificateTemplatesOSSettings(t *testing.T, ds *Datasto
 			// Upsert the certificate template status
 			ExecAdhocSQL(t, ds, func(q sqlx.ExtContext) error {
 				_, err := q.ExecContext(t.Context(),
-					`INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, status, operation_type)
-					VALUES (?, ?, ?, 'install')
+					`INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, status, operation_type, name)
+					VALUES (?, ?, ?, 'install', ?)
 					ON DUPLICATE KEY UPDATE status = ?`,
-					newHost.Host.UUID, certTemplate.ID, tc.status, tc.status)
+					newHost.Host.UUID, certTemplate.ID, tc.status, certTemplate.Name, tc.status)
 				return err
 			})
 
@@ -5908,7 +5908,7 @@ func testHostsPackStatsMultipleHosts(t *testing.T, ds *Datastore) {
 
 	// Create global pack (and one scheduled query in it).
 	test.AddAllHostsLabel(t, ds) // the global pack needs the "All Hosts" label.
-	labels, err := ds.ListLabels(context.Background(), fleet.TeamFilter{}, fleet.ListOptions{})
+	labels, err := ds.ListLabels(context.Background(), fleet.TeamFilter{}, fleet.ListOptions{}, false)
 	require.NoError(t, err)
 	require.Len(t, labels, 1)
 
@@ -6100,7 +6100,7 @@ func testHostsPackStatsForPlatform(t *testing.T, ds *Datastore) {
 	require.NotNil(t, host2)
 
 	test.AddAllHostsLabel(t, ds)
-	labels, err := ds.ListLabels(context.Background(), fleet.TeamFilter{}, fleet.ListOptions{})
+	labels, err := ds.ListLabels(context.Background(), fleet.TeamFilter{}, fleet.ListOptions{}, false)
 	require.NoError(t, err)
 	require.Len(t, labels, 1)
 
@@ -8506,8 +8506,8 @@ func testHostsDeleteHosts(t *testing.T, ds *Datastore) {
 	require.NoError(t, err)
 
 	_, err = ds.writer(context.Background()).Exec(`
-		INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type)
-		VALUES (?, 1, 'foo', 'pending', 'install')
+		INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type, name)
+		VALUES (?, 1, 'foo', 'pending', 'install', 'test-cert')
 	`, host.UUID)
 	require.NoError(t, err)
 

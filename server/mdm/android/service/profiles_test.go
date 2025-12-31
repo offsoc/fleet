@@ -637,9 +637,9 @@ func testHostsWithLabelProfiles(t *testing.T, ds fleet.Datastore, client *mock.C
 	})
 
 	// make h1 member of inclany and h2 of inclall
-	_, _, err = ds.UpdateLabelMembershipByHostIDs(ctx, linclAny.ID, []uint{h1.Host.ID}, fleet.TeamFilter{})
+	_, _, err = ds.UpdateLabelMembershipByHostIDs(ctx, *linclAny, []uint{h1.Host.ID}, fleet.TeamFilter{})
 	require.NoError(t, err)
-	_, _, err = ds.UpdateLabelMembershipByHostIDs(ctx, linclAll.ID, []uint{h2.Host.ID}, fleet.TeamFilter{})
+	_, _, err = ds.UpdateLabelMembershipByHostIDs(ctx, *linclAll, []uint{h2.Host.ID}, fleet.TeamFilter{})
 	require.NoError(t, err)
 
 	// no-label, exclude any and the respective include profiles are applied
@@ -661,7 +661,7 @@ func testHostsWithLabelProfiles(t *testing.T, ds fleet.Datastore, client *mock.C
 	})
 
 	// make h1 member of exclAny so it stops receiving this profile
-	_, _, err = ds.UpdateLabelMembershipByHostIDs(ctx, lexclAny.ID, []uint{h1.Host.ID}, fleet.TeamFilter{})
+	_, _, err = ds.UpdateLabelMembershipByHostIDs(ctx, *lexclAny, []uint{h1.Host.ID}, fleet.TeamFilter{})
 	require.NoError(t, err)
 
 	// this only affects h1, h2 version is unchanged
@@ -862,12 +862,13 @@ func testCertificateTemplates(t *testing.T, ds fleet.Datastore, client *mock.Cli
 
 		for _, certTemplateID := range certificateTemplateIDs {
 			_, err = q.ExecContext(ctx,
-				"INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type) VALUES (?, ?, ?, ?, ?)",
+				"INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type, name) VALUES (?, ?, ?, ?, ?, ?)",
 				host2.UUID,
 				certTemplateID,
 				"challenge",
 				fleet.CertificateTemplateDelivered,
 				fleet.MDMOperationTypeInstall,
+				fmt.Sprintf("Cert Template %d", certTemplateID),
 			)
 			require.NoError(t, err)
 		}
@@ -1131,8 +1132,8 @@ func testCertificateTemplatesIncludesExistingVerified(t *testing.T, ds fleet.Dat
 	mysql.ExecAdhocSQL(t, ds.(*mysql.Datastore), func(q sqlx.ExtContext) error {
 		// Verified status
 		_, err := q.ExecContext(ctx,
-			"INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type) VALUES (?, ?, ?, ?, ?)",
-			host.Host.UUID, verifiedCert.ID, "verified-challenge", fleet.CertificateTemplateVerified, fleet.MDMOperationTypeInstall,
+			"INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type, name) VALUES (?, ?, ?, ?, ?, ?)",
+			host.Host.UUID, verifiedCert.ID, "verified-challenge", fleet.CertificateTemplateVerified, fleet.MDMOperationTypeInstall, verifiedCert.Name,
 		)
 		if err != nil {
 			return err
@@ -1140,8 +1141,8 @@ func testCertificateTemplatesIncludesExistingVerified(t *testing.T, ds fleet.Dat
 
 		// Delivered status
 		_, err = q.ExecContext(ctx,
-			"INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type) VALUES (?, ?, ?, ?, ?)",
-			host.Host.UUID, deliveredCert.ID, "delivered-challenge", fleet.CertificateTemplateDelivered, fleet.MDMOperationTypeInstall,
+			"INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type, name) VALUES (?, ?, ?, ?, ?, ?)",
+			host.Host.UUID, deliveredCert.ID, "delivered-challenge", fleet.CertificateTemplateDelivered, fleet.MDMOperationTypeInstall, deliveredCert.Name,
 		)
 		if err != nil {
 			return err
@@ -1149,8 +1150,8 @@ func testCertificateTemplatesIncludesExistingVerified(t *testing.T, ds fleet.Dat
 
 		// Delivering status (from a previous failed run)
 		_, err = q.ExecContext(ctx,
-			"INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type) VALUES (?, ?, ?, ?, ?)",
-			host.Host.UUID, deliveringCert.ID, "delivering-challenge", fleet.CertificateTemplateDelivering, fleet.MDMOperationTypeInstall,
+			"INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type, name) VALUES (?, ?, ?, ?, ?, ?)",
+			host.Host.UUID, deliveringCert.ID, "delivering-challenge", fleet.CertificateTemplateDelivering, fleet.MDMOperationTypeInstall, deliveringCert.Name,
 		)
 		if err != nil {
 			return err
@@ -1158,8 +1159,8 @@ func testCertificateTemplatesIncludesExistingVerified(t *testing.T, ds fleet.Dat
 
 		// Failed status
 		_, err = q.ExecContext(ctx,
-			"INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type) VALUES (?, ?, ?, ?, ?)",
-			host.Host.UUID, failedCert.ID, "failed-challenge", fleet.CertificateTemplateFailed, fleet.MDMOperationTypeInstall,
+			"INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type, name) VALUES (?, ?, ?, ?, ?, ?)",
+			host.Host.UUID, failedCert.ID, "failed-challenge", fleet.CertificateTemplateFailed, fleet.MDMOperationTypeInstall, failedCert.Name,
 		)
 		if err != nil {
 			return err
@@ -1167,8 +1168,8 @@ func testCertificateTemplatesIncludesExistingVerified(t *testing.T, ds fleet.Dat
 
 		// Pending status (new certificate to be processed)
 		_, err = q.ExecContext(ctx,
-			"INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type) VALUES (?, ?, ?, ?, ?)",
-			host.Host.UUID, pendingCert.ID, "", fleet.CertificateTemplatePending, fleet.MDMOperationTypeInstall,
+			"INSERT INTO host_certificate_templates (host_uuid, certificate_template_id, fleet_challenge, status, operation_type, name) VALUES (?, ?, ?, ?, ?, ?)",
+			host.Host.UUID, pendingCert.ID, "", fleet.CertificateTemplatePending, fleet.MDMOperationTypeInstall, pendingCert.Name,
 		)
 		return err
 	})
