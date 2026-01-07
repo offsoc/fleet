@@ -484,6 +484,8 @@ software:
       self_service: true
     - slug: zeplin/darwin # Zeplin for macOS
       self_service: true
+    - slug: okta-verify/darwin # Okta Verify for macOS
+      self_service: true
     # Windows apps
     - slug: google-chrome/windows # Google Chrome for Windows
       self_service: true
@@ -572,4 +574,10 @@ software:
     - slug: vlc/windows # VLC media player for Windows
       self_service: true
     - slug: wireshark/windows # Wireshark for Windows
+      self_service: true
+    - slug: obs/windows # OBS for Windows
+      self_service: true
+    - slug: sourcetree/windows # Sourcetree for Windows
+      self_service: true
+    - slug: spotify/windows # Spotify for Windows
       self_service: true
