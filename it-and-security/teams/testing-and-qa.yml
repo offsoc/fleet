@@ -490,6 +490,8 @@ software:
       self_service: true
     - slug: nextcloud/darwin # Nextcloud for macOS
       self_service: true
+    - slug: proxifier/darwin # Proxifier for macOS
+      self_service: true
     # Windows apps
     - slug: google-chrome/windows # Google Chrome for Windows
       self_service: true
